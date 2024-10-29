@@ -1,5 +1,5 @@
 import express, { Express } from "express";
-import { dummy } from './routes';
+import { addGuest, getGuest, listGuests, saveGuest } from './routes';
 import bodyParser from 'body-parser';
 
 
@@ -7,5 +7,8 @@ import bodyParser from 'body-parser';
 const port: number = 8088;
 const app: Express = express();
 app.use(bodyParser.json());
-app.get("/api/dummy", dummy);  // TODO: REMOVE
+app.get("/api/list", listGuests);
+app.post("/api/add", addGuest);
+app.post("/api/save", saveGuest);
+app.get("/api/get", getGuest);
 app.listen(port, () => console.log(`Server listening on ${port}`));
